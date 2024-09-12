@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div className="bg-red-800">Navbar</div>
   )
 }
 
