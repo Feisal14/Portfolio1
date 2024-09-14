@@ -9,14 +9,14 @@ const Navbar = () => {
             <a
               key={navItem.name}
               href={navItem.link}
-              className="px-7 text-gray-400"
+              className="px-7 text-gray-400 hover:text-orange-400 focus:text-orange-400 active:text-orange-700 text-lg"
             >
               {navItem.name}
             </a>
           ))}
         </div>
 
-        <button className="bg-orange-500 rounded-md w-36 h-11 font-mono font-thin">
+        <button className="bg-orange-500 rounded-md w-36 h-11 font-mono font-bold">
           Hire Me
         </button>
       </div>
