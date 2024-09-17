@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { navItems } from "../../../data";
+import { navItems } from "../../data";
 import { FaAlignLeft } from "react-icons/fa6";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
