@@ -54,7 +54,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <button className="bg-orange-500 rounded-md w-36 h-11 font-mono font-bold sm:mb-4 ">
+        <button className="bg-orange-500 rounded-md md:w-36 sm:w-24 h-11 font-mono font-bold sm:mb-4 ">
           Hire Me
         </button>
       </div>
