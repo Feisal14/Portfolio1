@@ -1,63 +1,76 @@
-import { useState } from "react";
-import { navItems } from "../../data";
+import { useState, useEffect } from "react";
+import { navItems } from "../../data"; // Assuming you have nav items here
 import { FaAlignLeft } from "react-icons/fa6";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
+
   const handleDropdown = () => {
     setDropdown(!dropdown);
   };
-  useGSAP(() => {
-    if (dropdown == true) gsap.to("#dropdown", { x: -20 });
-    else {
-      gsap.to("#dropdown", { x: -42 });
+
+  useEffect(() => {
+    if (dropdown) {
+      gsap.to("#dropdown", { x: 0, opacity: 1, duration: 0.4, ease: "power2.out" });
+    } else {
+      gsap.to("#dropdown", { x: -50, opacity: 0, duration: 0.4, ease: "power2.in" });
     }
   }, [dropdown]);
+
   return (
-    <div className="mx-16 my-6 py-6 sm:mx-4 sm:my-2">
-      <div className="flex md:justify-between items-center lg:justify-between sm:justify-between  sm:items-center ">
+    <div className="mx-8 my-4 py-4 sm:mx-4 sm:my-2 p-40">
+      <div className="flex items-center justify-between sm:flex-row sm:justify-between">
+
+        {/* Burger Menu for Mobile */}
         <button
-          className="navitems hidden md:hidden sm:flex "
+          className="navitems sm:flex md:hidden lg:hidden"
           onClick={handleDropdown}
         >
-          <FaAlignLeft />
-          <div id="dropdown" className="-translate-x-9">
-            {dropdown && (
-              <span className="flex flex-col absolute -mt-1 mx-1 bg-dark-background w-36">
-                {navItems.map((navItem) => (
-                  <a
-                    key={navItem.name}
-                    href={navItem.link}
-                    className=" text-gray-400 hover:text-orange-400 focus:text-orange-400 active:text-orange-700 "
-                  >
-                    {navItem.name}
-                  </a>
-                ))}
-              </span>
-            )}
-          </div>
+          <FaAlignLeft className="text-gray-400 text-2xl" />
         </button>
-        <h1 className="text-orange-500 font-bold text-2xl sm:text-center md:text-left">
+
+        {/* Logo */}
+        <h1 className="text-orange-500 font-bold text-2xl sm:text-lg sm:text-center">
           <button>FAISAL</button>
         </h1>
-        <div className="hidden sm:hidden md:flex">
+
+        {/* Navigation Items for Desktop */}
+        <div className="hidden md:flex lg:flex">
           {navItems.map((navItem) => (
             <a
               key={navItem.name}
               href={navItem.link}
-              className="px-7 text-gray-400 hover:text-orange-400 focus:text-orange-400 active:text-orange-700 text-lg"
+              className="px-5 text-gray-400 hover:text-orange-400 text-lg"
             >
               {navItem.name}
             </a>
           ))}
         </div>
 
-        <button className="bg-orange-500 rounded-md md:w-36 sm:w-24 h-11 font-mono font-bold sm:mb-4 ">
+        {/* Hire Me Button */}
+        <button className="bg-orange-500 text-white rounded-md px-2 h-10 font-mono font-bold hover:bg-orange-600 transition-all sm:w-20 sm:h-8">
           Hire Me
         </button>
       </div>
+
+      {/* Dropdown Menu (Mobile) */}
+      {dropdown && (
+        <div
+          id="dropdown"
+          className="absolute top-14 left-0 bg-dark-background z-50 p-4 w-36 text-left shadow-md sm:w-full sm:top-16"
+        >
+          {navItems.map((navItem) => (
+            <a
+              key={navItem.name}
+              href={navItem.link}
+              className="block text-gray-400 hover:text-orange-400 py-2"
+            >
+              {navItem.name}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
