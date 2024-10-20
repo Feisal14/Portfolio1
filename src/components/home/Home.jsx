@@ -42,7 +42,7 @@ const Home = () => {
          
             <a
               className="text-gray-400 rounded-md border-2 md:w-36 sm:w-28 h-9 border-gray-400 text-center content-center"
-              href="/assets/Faisal Ahmad, Resume (1).pdf" // Direct URL from public folder
+              href="/assets/Faisal Ahmad, Resume (1).pdf"
               download
             >
               Resume
